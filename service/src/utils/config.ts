@@ -10,6 +10,11 @@ interface ConfigType {
         password: string
         database: string
     }
+    jwt: {
+        secret: string
+        unless: string[]
+    }
+    baseUrl: string
 }
 
 const config = yaml.parse(fs.readFileSync('./config.yaml', 'utf8')) as ConfigType
