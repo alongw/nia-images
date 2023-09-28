@@ -1,7 +1,0 @@
-# 数据库
-db:
-  host: 10.0.0.200
-  port: 3306
-  user: nia-img-dev
-  password: 4GZ3ewijdbYpiD2K
-  database: nia-img-dev
