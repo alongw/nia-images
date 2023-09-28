@@ -3,12 +3,12 @@ import bodyParser from 'body-parser'
 import expressJWT from 'express-jwt'
 import logger from './log'
 import cors from 'cors'
-import config from './config'
+import { getConfig } from './config'
 import type { Request } from '../types/express'
 
-const jwtSecretKey = config.jwt.secret
-const baseUrl = config.baseUrl
-const unless = config.jwt.unless
+const jwtSecretKey = await getConfig('jwt', 'secret')
+const baseUrl = await getConfig('app', 'baseUrl')
+const unless = await getConfig('jwt', 'unless')
 const app = express()
 app.use(cors())
 

@@ -1,6 +1,3 @@
-# 监听端口
-port: 10099
-
 # 数据库
 db:
   host: 10.0.0.200
@@ -8,13 +5,3 @@ db:
   user: nia-img-dev
   password: 4GZ3ewijdbYpiD2K
   database: nia-img-dev
-
-# jwt 相关配置
-jwt:
-  secret: b07876c1a995034912c415f249b05dc5
-  unless:
-    - /public
-    - /login
-
-# base url
-baseUrl: /api

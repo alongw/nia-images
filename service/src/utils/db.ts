@@ -1,8 +1,8 @@
 import mysql, { QueryError, FieldPacket } from 'mysql2'
-import config from './config'
+import { dbConfig } from './localconfig'
 import logger from './log'
 
-const { host, user, password, database, port } = config.db
+const { host, user, password, database, port } = dbConfig.db
 
 logger.info(`连接数据库 ${host}:${port} ${user} ${database}`)
 export const db = mysql.createPool({
