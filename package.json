@@ -1,0 +1,12 @@
+{
+    "name": "nia-images",
+    "version": "1.0.0",
+    "repository": "https://github.com/alongw/nia-images.git",
+    "author": "alongw <alongw@alongw.cn>",
+    "license": "AGPL-3.0",
+    "scripts": {
+        "install": "script/install-package.bat",
+        "i": "yarn install",
+        "dev": "script/dev.bat"
+    }
+}
