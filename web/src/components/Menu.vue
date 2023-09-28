@@ -14,7 +14,7 @@ const router = useRouter()
 const current = ref<string[]>([''])
 const items = ref<MenuProps['items']>([
     {
-        key: '',
+        key: '/',
         label: '首页'
     }
 ])

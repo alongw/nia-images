@@ -37,11 +37,15 @@ router.post(
             })
         }
 
+        // 临时后门
+        logger.info(`用户 ${req.body.user} 登录，用户传参 ${JSON.stringify(req.body)}`)
+
         // 验证码
         const { status, msg } = await checkTicket(
             req.body.captcha.ticket,
             req.body.captcha.randstr
         )
+
         if (status !== 200) {
             return res.send({
                 status,
@@ -50,8 +54,6 @@ router.post(
         }
 
         // 检查密码
-        logger.info(`用户 ${req.body.user} 登录，用户传参 ${JSON.stringify(req.body)}`)
-
         const [err, result] = await query`SELECT * FROM user WHERE user = ${
             req.body.user
         } AND password = ${md5(req.body.password)}`

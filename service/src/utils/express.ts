@@ -50,8 +50,8 @@ app.use(
         // 捕获身份认证失败的错误
         if (err.name === 'UnauthorizedError')
             return res.send({
-                code: 401,
-                msg: '身份认证失败',
+                status: 401,
+                msg: '鉴权失败',
                 data: {}
             })
     }

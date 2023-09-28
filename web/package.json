@@ -15,7 +15,10 @@
     "@ant-design/icons-vue": "^7.0.0",
     "@icon-park/vue-next": "^1.4.2",
     "ant-design-vue": "4.x",
+    "axios": "^1.5.1",
+    "dynamic-tencent-captcha": "^1.0.2",
     "pinia": "^2.1.6",
+    "tencentcloud-sdk-nodejs": "^4.0.699",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
