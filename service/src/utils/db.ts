@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mysql, { QueryError, FieldPacket } from 'mysql2'
 import { dbConfig } from './localconfig'
 import logger from './log'

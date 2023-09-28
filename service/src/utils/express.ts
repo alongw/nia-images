@@ -44,6 +44,7 @@ app.use(
         err: express.Errback,
         req: express.Request,
         res: express.Response,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         next: express.NextFunction
     ) => {
         // 捕获身份认证失败的错误

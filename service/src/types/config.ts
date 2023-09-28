@@ -19,5 +19,6 @@ export interface Config {
     readonly jwt: {
         secret: string
         unless: string[]
+        expires: number
     }
 }

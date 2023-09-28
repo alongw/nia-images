@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { query } from './db'
 
 import { Config } from '../types/config'
