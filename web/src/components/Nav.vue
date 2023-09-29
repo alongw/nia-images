@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // import here ...
+import { getUserLoginStatus, getUserInfo } from '@/utils/getStatus'
 
 defineOptions({
     name: 'NavComponent'
@@ -9,6 +10,12 @@ defineOptions({
 <template>
     <div class="nav">
         <div class="title" @click="$router.push('/')">Nia Images</div>
+        <div class="user" v-if="$route.path != '/login'">
+            <div v-if="!getUserLoginStatus()">
+                <RouterLink to="/login" class="button-link">您好，请登录</RouterLink>
+            </div>
+            <div v-else>您好，{{ getUserInfo()?.user }}</div>
+        </div>
     </div>
 </template>
 

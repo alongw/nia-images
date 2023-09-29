@@ -14,8 +14,3 @@ export interface Request extends ExpressRequest {
     userIp: string
     user: User
 }
-
-// player
-export interface Inquires extends ExpressRequest {
-    parameter: string
-}

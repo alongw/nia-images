@@ -1,8 +1,11 @@
 <script setup lang="ts">
 // import here ...
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { MenuProps } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
+
+import { getMenuApi } from '@/apis'
+import { getUserLoginStatus } from '@/utils/getStatus'
 
 defineOptions({
     name: 'MenuComponent'
@@ -12,16 +15,32 @@ defineOptions({
 const router = useRouter()
 
 const current = ref<string[]>([''])
-const items = ref<MenuProps['items']>([
+
+const defaultitems = ref<MenuProps['items']>([
     {
         key: '/',
         label: '首页'
     }
 ])
 
+const newitems = ref<MenuProps['items']>()
+const getMenu = async () => {
+    if (!getUserLoginStatus()) return
+    const { data: res } = await getMenuApi()
+    newitems.value = res.data.menu
+}
+
+const items = computed(() => {
+    return defaultitems.value?.concat(newitems.value || [])
+})
+
 const click = (e: string) => {
     router.push(e)
 }
+
+onMounted(() => {
+    getMenu()
+})
 </script>
 
 <template>

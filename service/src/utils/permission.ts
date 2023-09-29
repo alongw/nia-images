@@ -20,6 +20,7 @@ type PartialSub<T> = {
 const defaultPermission: Permission = {
     user: {
         // user
+        low: true,
         login: true
     },
     admin: {
