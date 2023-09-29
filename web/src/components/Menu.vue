@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // import here ...
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { MenuProps } from 'ant-design-vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 import { getMenuApi } from '@/apis'
 import { getUserLoginStatus } from '@/utils/getStatus'
@@ -13,6 +13,14 @@ defineOptions({
 
 // code here ...
 const router = useRouter()
+const route = useRoute()
+
+watch(
+    () => route.path,
+    () => {
+        getMenu()
+    }
+)
 
 const current = ref<string[]>([''])
 
