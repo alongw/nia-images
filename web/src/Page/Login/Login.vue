@@ -15,7 +15,14 @@ const formData = ref({
     password: ''
 })
 
+const loading = ref(false)
+
 const login = async () => {
+    // 表单效验
+    if (!formData.value.user || !formData.value.password) {
+        return message.error('账号或密码不能为空')
+    }
+    loading.value = true
     // 验证码
     const captchares = await getCaptcha('2046626881')
     const { data: res } = await loginApi({
@@ -26,6 +33,7 @@ const login = async () => {
         }
     })
     const { status, msg, data } = res
+    loading.value = false
     if (status != 200) {
         return message.error(msg)
     }
@@ -46,7 +54,7 @@ const login = async () => {
             />
         </a-space>
         <a-space wrap>
-            <a-button type="primary" @click="login()">登录</a-button>
+            <a-button type="primary" @click="login()" :loading="loading">登录</a-button>
             <a-button>忘记密码</a-button>
             <a-button style="float: right">注册</a-button>
         </a-space>

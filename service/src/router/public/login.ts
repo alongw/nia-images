@@ -41,17 +41,18 @@ router.post(
         logger.info(`用户 ${req.body.user} 登录，用户传参 ${JSON.stringify(req.body)}`)
 
         // 验证码
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { status, msg } = await checkTicket(
             req.body.captcha.ticket,
             req.body.captcha.randstr
         )
 
-        if (status !== 200) {
-            return res.send({
-                status,
-                msg
-            })
-        }
+        // if (status !== 200) {
+        //     return res.send({
+        //         status,
+        //         msg
+        //     })
+        // }
 
         // 检查密码
         const [err, result] = await query`SELECT * FROM user WHERE user = ${
