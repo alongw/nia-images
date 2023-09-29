@@ -31,7 +31,7 @@ const defaultPermission: Permission = {
  * 判断单个或多个权限
  */
 
-const checkPermission = async (
+export const checkPermission = async (
     permission: PartialSub<Permission> | string,
     user: number
 ): Promise<boolean> => {
@@ -114,10 +114,10 @@ export const checkUserPermission = async (user: number, name: string) => {
     // @ts-ignore
     if (result[0]?.value == null && !defaultPermission[nameKey[0]]?.[nameKey[1]]) {
         logger.info(
-            `鉴权 - 用户 UID [${user}] 鉴权 ${nameKey} 找不到相关权限节点，因此匹配默认权限返回拒绝`
+            `鉴权 - 用户 UID [${user}] 鉴权 ${name} 找不到相关权限节点，因此匹配默认权限返回拒绝`
         )
         return false
     }
-    logger.info(`鉴权 - 用户 UID [${user}] 鉴权 ${nameKey} 通过`)
+    logger.info(`鉴权 - 用户 UID [${user}] 鉴权 ${name} 通过`)
     return true
 }

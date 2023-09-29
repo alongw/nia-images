@@ -5,7 +5,7 @@ import md5 from './../../utils/md5'
 import { checkTicket } from './../../utils/captcha'
 import logger from './../../utils/log'
 import { getConfig } from './../../utils/config'
-import { checkUserPermission } from './../../utils/permission'
+import { checkPermission } from './../../utils/permission'
 
 import type { Request } from './../../types/request'
 
@@ -68,7 +68,14 @@ router.post(
         }
 
         // 鉴权
-        const auth = await checkUserPermission(result[0].uid, 'login')
+        const auth = await checkPermission(
+            {
+                user: {
+                    login: true
+                }
+            },
+            result[0].uid
+        )
         if (!auth) {
             logger.info(`用户 ${req.body.user} 尝试登录，但是无权登录，因此拒绝登录`)
             return res.send({
