@@ -18,7 +18,9 @@ const route = useRoute()
 watch(
     () => route.path,
     () => {
-        getMenu()
+        if (route.name == 'home') {
+            getMenu()
+        }
     }
 )
 

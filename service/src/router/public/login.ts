@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { OkPacket } from 'mysql2'
 import { query } from './../../utils/db'
 import token from './../../utils/token'
 import md5 from './../../utils/md5'
@@ -95,6 +96,19 @@ router.post(
             const validityPeriodSeconds = await getConfig('jwt', 'expires')
             const expirationTimestamp = currentTimestamp + validityPeriodSeconds * 1000
             return expirationTimestamp
+        }
+
+        const [logerr] = await query<OkPacket>`
+            insert into login_log (user,time,ip,\`user-agent\`,headers)
+            values (${result[0].uid},NOW(),${req.ip},${JSON.stringify(
+            req.headers['user-agent']
+        )},${JSON.stringify(req.headers)});
+            `
+        if (logerr) {
+            return res.send({
+                status: 500,
+                msg: '服务器错误'
+            })
         }
 
         return res.send({
