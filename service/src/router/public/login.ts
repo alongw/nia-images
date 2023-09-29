@@ -99,7 +99,7 @@ router.post(
         }
 
         const [logerr] = await query<OkPacket>`
-            insert into login_log (user,time,ip,\`user-agent\`,headers)
+            insert into login_log (uid,time,ip,\`user-agent\`,headers)
             values (${result[0].uid},NOW(),${req.ip},${JSON.stringify(
             req.headers['user-agent']
         )},${JSON.stringify(req.headers)});
