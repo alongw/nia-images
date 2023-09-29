@@ -36,3 +36,17 @@ export const getMenuApi = () => {
         }>
     >('/menu')
 }
+
+// 获取 KEY
+export const getKeyApi = () => {
+    return axios.get<
+        Response<{
+            key: string
+        }>
+    >('/user/key')
+}
+
+// 重置 KEY
+export const resetKeyApi = () => {
+    return axios.post<Response<void>>('/user/key')
+}

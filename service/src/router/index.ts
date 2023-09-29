@@ -12,4 +12,9 @@ router.use('/menu', async (req, res, next) =>
     (await import('./menu/index')).default(req, res, next)
 )
 
+// user
+router.use('/user', async (req, res, next) =>
+    (await import('./user/index')).default(req, res, next)
+)
+
 export default router

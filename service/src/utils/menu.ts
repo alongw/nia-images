@@ -23,7 +23,7 @@ interface Menu {
 // 定义所有菜单组
 const menus: Menu[] = [
     {
-        key: '/user',
+        key: '/users',
         label: '用户中心',
         permission: {
             user: {

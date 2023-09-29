@@ -33,7 +33,16 @@ const defaultitems = ref<MenuProps['items']>([
     }
 ])
 
-const newitems = ref<MenuProps['items']>()
+const newitems = ref<MenuProps['items']>([
+    {
+        key: '/login',
+        label: '登录'
+    },
+    {
+        key: '/register',
+        label: '注册'
+    }
+])
 const getMenu = async () => {
     if (!getUserLoginStatus()) return
     const { data: res } = await getMenuApi()

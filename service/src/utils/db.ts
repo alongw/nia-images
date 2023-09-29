@@ -8,7 +8,7 @@ const { host, user, password, database, port } = dbConfig.db
 logger.info(
     `尝试使用用户 ${user} 密码 *** 连接到远程 SQL 服务器 ${host}:${port} ${database} 数据库`
 )
-export const db = mysql.createPool({
+const db = mysql.createPool({
     host,
     port,
     user,
@@ -17,7 +17,7 @@ export const db = mysql.createPool({
     charset: 'UTF8MB4_GENERAL_CI'
 })
 
-export const dbQuery = <T = any>(
+const dbQuery = <T = any>(
     sql: string,
     data?: any
 ): Promise<[QueryError, T, FieldPacket[]]> => {

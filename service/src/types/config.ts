@@ -21,4 +21,8 @@ export interface Config {
         unless: string[]
         expires: number
     }
+
+    readonly user: {
+        key: string
+    }
 }

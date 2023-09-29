@@ -21,7 +21,9 @@ const defaultPermission: Permission = {
     user: {
         // user
         login: true,
-        low: true
+        low: true,
+        getKey: true,
+        resetKey: true
     },
     admin: {
         // admin
@@ -75,7 +77,11 @@ export const auth: {
         }
         if (!havePermission) {
             logger.info(
-                `[${req.path}] [${req.user.uid}] 鉴权 ${JSON.stringify(permission)} 拒绝`
+                `鉴权 - 由于用户 UID ${req.user.uid} 访问 ${
+                    req.path
+                } 接口鉴权 ${JSON.stringify(
+                    permission
+                )} 所有鉴权均不通过，因此返回 1020 鉴权失败错误码`
             )
             return res.send({
                 status: 1020,
@@ -83,7 +89,9 @@ export const auth: {
             })
         }
         logger.info(
-            `[${req.path}] [${req.user.uid}] 鉴权 ${JSON.stringify(permission)} 通过`
+            `鉴权 - 由于用户 UID ${req.user.uid} 访问 ${
+                req.path
+            } 接口鉴权 ${JSON.stringify(permission)} 部分鉴权通过，因此放行本次请求`
         )
         next()
     }
@@ -105,7 +113,7 @@ const checkUserPermission = async (user: number, name: string) => {
   where user.uid=${user}
   `
     if (err || result[0]?.value == 0) {
-        logger.info(`鉴权 - 用户 UID [${user}] 鉴权 ${name} 拒绝`)
+        logger.info(`鉴权 - 用户 UID ${user} 鉴权 ${name} 拒绝`)
         return false
     }
     // 数据库没有约定权限
@@ -115,10 +123,10 @@ const checkUserPermission = async (user: number, name: string) => {
     // @ts-ignore
     if (result[0]?.value == null && !defaultPermission[nameKey[0]]?.[nameKey[1]]) {
         logger.info(
-            `鉴权 - 用户 UID [${user}] 鉴权 ${name} 找不到相关权限节点，因此匹配默认权限返回拒绝`
+            `鉴权 - 用户 UID ${user} 鉴权 ${name} 找不到相关权限节点，因此匹配默认权限返回拒绝`
         )
         return false
     }
-    logger.info(`鉴权 - 用户 UID [${user}] 鉴权 ${name} 通过`)
+    logger.info(`鉴权 - 用户 UID ${user} 鉴权 ${name} 通过`)
     return true
 }

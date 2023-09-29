@@ -3,6 +3,8 @@ export interface Permission {
         // user
         login: boolean | null
         low: boolean | null
+        getKey: boolean | null
+        resetKey: boolean | null
     }
     admin: {
         // admin
