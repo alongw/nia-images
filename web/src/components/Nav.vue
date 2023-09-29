@@ -14,7 +14,22 @@ defineOptions({
             <div v-if="!getUserLoginStatus()">
                 <RouterLink to="/login" class="button-link">您好，请登录</RouterLink>
             </div>
-            <div v-else>您好，{{ getUserInfo()?.user }}</div>
+
+            <div v-else>
+                <a-space>
+                    <div>您好，{{ getUserInfo()?.user }}</div>
+                    |
+                    <div>
+                        <RouterLink
+                            to="/loginout"
+                            class="button-link"
+                            style="color: #727171"
+                        >
+                            退出登录
+                        </RouterLink>
+                    </div>
+                </a-space>
+            </div>
         </div>
     </div>
 </template>

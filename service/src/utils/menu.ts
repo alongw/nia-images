@@ -41,16 +41,6 @@ const menus: Menu[] = [
             }
         },
         priority: 9000
-    },
-    {
-        key: '/loginout',
-        label: '退出登录',
-        permission: {
-            user: {
-                low: true
-            }
-        },
-        priority: 9999
     }
 ]
 
