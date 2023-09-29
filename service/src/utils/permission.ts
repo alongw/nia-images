@@ -20,8 +20,8 @@ type PartialSub<T> = {
 const defaultPermission: Permission = {
     user: {
         // user
-        low: true,
-        login: true
+        login: true,
+        low: true
     },
     admin: {
         // admin
@@ -92,7 +92,7 @@ export const auth: {
 /**
  * 验证用户权限
  */
-export const checkUserPermission = async (user: number, name: string) => {
+const checkUserPermission = async (user: number, name: string) => {
     const [err, result] = await query<
         {
             value: boolean | null | 0 | 1
