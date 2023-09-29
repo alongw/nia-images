@@ -39,6 +39,7 @@ const login = async () => {
     }
     message.success(msg)
     window.localStorage.setItem('token', data.token)
+    window.localStorage.setItem('expiresIn', data.expiresIn.toString())
     router.push('/')
 }
 </script>
