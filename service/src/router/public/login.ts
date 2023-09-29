@@ -5,6 +5,7 @@ import md5 from './../../utils/md5'
 import { checkTicket } from './../../utils/captcha'
 import logger from './../../utils/log'
 import { getConfig } from './../../utils/config'
+import { checkUserPermission } from './../../utils/permission'
 
 import type { Request } from './../../types/request'
 
@@ -64,6 +65,16 @@ router.post(
         if (result.length < 1) {
             logger.info(`用户 ${req.body.user} 登录鉴权失败`)
             return res.send({ status: 403, msg: '用户名或密码错误' })
+        }
+
+        // 鉴权
+        const auth = await checkUserPermission(result[0].uid, 'login')
+        if (!auth) {
+            logger.info(`用户 ${req.body.user} 尝试登录，但是无权登录，因此拒绝登录`)
+            return res.send({
+                status: 403,
+                msg: '您的账号被禁止登录，详细请咨询管理员！'
+            })
         }
 
         logger.info(`用户 ${req.body.user} 登录鉴权通过`)
