@@ -30,7 +30,17 @@ const menus: Menu[] = [
                 login: true
             }
         },
-        priority: 0
+        priority: 1010
+    },
+    {
+        key: '/docs',
+        label: '使用文档',
+        permission: {
+            user: {
+                low: true
+            }
+        },
+        priority: 9000
     },
     {
         key: '/loginout',

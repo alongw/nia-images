@@ -15,16 +15,17 @@ defineOptions({
 const router = useRouter()
 const route = useRoute()
 
+const current = ref<string[]>([''])
+
 watch(
     () => route.path,
     () => {
+        current.value = [route.path]
         if (route.name == 'home') {
             getMenu()
         }
     }
 )
-
-const current = ref<string[]>([''])
 
 const defaultitems = ref<MenuProps['items']>([
     {
@@ -58,6 +59,7 @@ const click = (e: string) => {
 }
 
 onMounted(() => {
+    current.value = [route.path]
     getMenu()
 })
 </script>

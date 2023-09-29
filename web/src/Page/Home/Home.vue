@@ -39,6 +39,7 @@ defineOptions({
             <!-- <template #extra><a href="#">more</a></template> -->
             <p>本站 API 的所有内容仅供学习和交流，请勿用于任何非法用途</p>
             <p>本站 API 仅功遵循相关法律的开发者使用，严禁滥用</p>
+            <p>图片按理来说应该不会多，而是比较少。因为这些都是我喜欢的（划掉）</p>
         </a-card>
     </div>
 </template>
