@@ -1,0 +1,61 @@
+name: 构建程序
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            BASE_URL: ${{secrets.BASE_URL}}
+        steps:
+            - name: 从仓库拉取源代码
+              uses: actions/checkout@v3
+
+            - name: 设置 node 版本
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: 安装依赖
+              run: |
+                  cd ./service
+                  yarn install
+                  cd ..
+                  cd ./web
+                  yarn install
+                  cd ..
+
+            - name: 构建
+              run: |
+                  mkdir ./dist
+                  mkdir ./dtst/web
+                  mkdir ./dtst/service
+                  cd ./service
+                  yarn build
+                  cd ..
+                  cd ./web
+                  echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' >> .env
+                  yarn build
+                  cd ..
+                  cp ./package.json ./dtst
+                  cp -r ./service/dist ./dtst/service
+                  cp -r ./web/dist ./dtst/web
+                  cp ./web/package.json ./dtst/web
+                  cp ./service/package.json ./dtst/service
+                  cp -r ./service/template ./dtst/service
+
+            - name: 上传前端文件
+              uses: actions/upload-artifact@v2
+              with:
+                  name: frontend-build
+                  path: dist/web/
+
+            - name: 上传后端文件
+              uses: actions/upload-artifact@v2
+              with:
+                  name: service-build
+                  path: dist/service
