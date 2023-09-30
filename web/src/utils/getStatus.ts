@@ -26,6 +26,7 @@ interface UserInfo {
     key: string
     register_time: string
     login_time: string
+    user_link: string
     iat: number
     exp: number
 }

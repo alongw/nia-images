@@ -122,7 +122,8 @@ router.post(
                     api_img: result[0].api_img,
                     key: result[0].key,
                     register_time: result[0].register_time,
-                    login_time: result[0].login_time
+                    login_time: result[0].login_time,
+                    user_link: result[0].user_link
                 }),
                 expiresIn: await calculateExpirationTimestamp()
             }

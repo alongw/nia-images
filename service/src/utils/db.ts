@@ -17,7 +17,7 @@ const db = mysql.createPool({
     charset: 'UTF8MB4_GENERAL_CI'
 })
 
-const dbQuery = <T = any>(
+export const rawQuery = <T = any>(
     sql: string,
     data?: any
 ): Promise<[QueryError, T, FieldPacket[]]> => {
@@ -34,7 +34,7 @@ const dbQuery = <T = any>(
 
 export const query = <T = any>(strings: TemplateStringsArray, ...data: any) => {
     const sql = strings.join('?')
-    return dbQuery<T>(sql, data)
+    return rawQuery<T>(sql, data)
     // return new Promise((resolve) => {
     //   const sql = strings.join('?')
     //   db.query(sql, data, (err, result, fields) => {

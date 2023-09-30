@@ -8,6 +8,7 @@ export interface User extends Express.User {
     key: string
     register_time: string
     login_time: string
+    user_link: string
 }
 
 export interface Request extends ExpressRequest {

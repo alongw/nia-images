@@ -51,9 +51,18 @@ app.use(
         if (err.name === 'UnauthorizedError')
             return res.send({
                 status: 401,
-                msg: '鉴权失败',
-                data: {}
+                msg: '鉴权失败'
             })
+
+        // 其他错误
+        if (err.name === 'SyntaxError') {
+            return res.send({
+                status: 114514,
+                msg: '哼！大坏蛋！！！'
+            })
+        }
+
+        logger.error(`拦截到 express 报错 err.name 具体内容 ${err.toString()}`)
     }
 )
 
