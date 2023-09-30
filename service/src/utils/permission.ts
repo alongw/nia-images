@@ -85,7 +85,7 @@ export const auth: {
             )
             return res.send({
                 status: 1020,
-                msg: '鉴权失败，您无权访问'
+                msg: '鉴权失败，您无权执行该操作。详细请咨询管理员'
             })
         }
         logger.info(
