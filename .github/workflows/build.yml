@@ -32,8 +32,10 @@ jobs:
             - name: 构建
               run: |
                   mkdir ./dist
-                  mkdir ./dtst/web
-                  mkdir ./dtst/service
+                  cd ./dist
+                  mkdir ./web
+                  mkdir ./service
+                  cd ..
                   cd ./service
                   yarn build
                   cd ..
