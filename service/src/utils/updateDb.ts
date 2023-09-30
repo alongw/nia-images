@@ -104,12 +104,40 @@ const cmd: {
             user_agent       varchar(999)  null comment 'UA',
             user_link        varchar(99)   null comment '防盗链'
         )
-            comment '用户数据表';`
+            comment '用户数据表';`,
+        `
+        insert into \`system\` (\`version\`, dbVersion, \`lock\`) values (1, 1, 'unlock');
+        `
     ],
     2: [`select * from \`system\``]
 }
 
 logger.info('[数据库更新] - 开始检查更新')
+
+// 判断数据库是否是首次安装
+const [aerr, aresult] = await query`show tables like 'system'`
+if (aerr) {
+    logger.error(`[数据库更新] - 出现严重错误 ${aerr.message} ，请人工处理`)
+}
+
+if (aresult.length == 0) {
+    logger.warn('[数据库更新] - 检测到数据库为首次连接，即将为您更新')
+    logger.info(`[数据库更新] - 准备更新数据库（ 0 → 1 ）`)
+    for (const s of cmd[1]) {
+        logger.info(`[数据库更新] - 正在升级版本号 1 执行 ${s} 语句中`)
+        const [err, result] = await rawQuery(s)
+        if (err) {
+            logger.error(`[数据库更新] - 出现严重错误 ${err.message} ，请人工处理`)
+            process.exit()
+        }
+        logger.info(`[数据库更新] - 数据库返回 ${JSON.stringify(result)}`)
+    }
+    logger.info(`[数据库更新] - 升级版本号 1 完成`)
+    logger.info(
+        `[数据库更新] - 初始化数据库 ( 0 → 1 ) 成功，请修改数据库配置并重新启动本程序`
+    )
+    process.exit()
+}
 
 // 获取数据库版本
 const [err, result] = await query<
@@ -163,7 +191,7 @@ const checkUpdate = async () => {
         const sql = cmd[i]
         // 版本语句
         for (const j of sql) {
-            logger.info(`[数据库更新] - 正在升级版本号 ${i} 执行 ${j} 条语句中`)
+            logger.info(`[数据库更新] - 正在升级版本号 ${i} 执行 ${j} 语句中`)
             const [err, result] = await rawQuery(j)
             if (err) {
                 logger.error(`[数据库更新] - 出现严重错误 ${err.message} ，请人工处理`)
@@ -184,3 +212,5 @@ const checkUpdate = async () => {
 }
 
 checkUpdate()
+
+import('./start')
