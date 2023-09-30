@@ -8,6 +8,6 @@ export interface DbUser {
     register_time: string
     api_img: number
     key: string
-    user_link: string
+    user_link: string[]
     user_agent: string
 }

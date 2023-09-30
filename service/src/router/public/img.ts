@@ -9,7 +9,6 @@ import type { DbUser } from './../../types/user'
 import type { Config } from './../../types/images'
 
 const router = Router()
-
 router.get('/', async (req, res) => {
     // 检查参数
     if (!req.query || !req.query.key) {
@@ -57,6 +56,20 @@ const i = async (req: Request, res: Response, type: string) => {
     }
 
     const user = KEYresult[0] as DbUser
+
+    // // 防盗链
+    // if (user.user_link) {
+    //     // 检查链接是否有效
+    //     const referer = req.headers['referer']
+    //     console.log(referer)
+
+    //     if (!referer || user.user_link.indexOf(referer) < 0) {
+    //         return res.status(403).send({
+    //             status: 403,
+    //             msg: '拒绝访问'
+    //         })
+    //     }
+    // }
 
     // 秘钥正确，判断是否有权限获取图片
     const auth = await checkPermission(
