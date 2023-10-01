@@ -35,7 +35,7 @@ jobs:
             - name: 构建
               run: |
                   cd ./web
-                  echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' >> .env
+                  echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' > .env
                   yarn build
                   cp ./package.json ./dist
                   cd ..
