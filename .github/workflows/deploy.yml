@@ -71,7 +71,7 @@ jobs:
               uses: easingthemes/ssh-deploy@main
               with:
                   SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
-                  SOURCE: dist/nia/
+                  SOURCE: dist/service/
                   REMOTE_HOST: ${{ secrets.SERVER_HOST }}
                   REMOTE_USER: ${{ secrets.SERVER_USER }}
                   TARGET: ${{secrets.SERVER_PATH}}
