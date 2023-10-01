@@ -44,7 +44,8 @@ jobs:
                   yarn build
                   cd ..
                   cp ./package.json ./dtst
-                  cp -r ./service/dist ./dtst/service
+                  cp -r ./service/dist/code ./dtst/service
+                  mv ./dist/code ./dtst/service
                   cp -r ./web/dist ./dtst/web
                   cp ./web/package.json ./dtst/web
                   cp ./service/package.json ./dtst/service

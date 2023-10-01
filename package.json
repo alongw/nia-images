@@ -8,5 +8,8 @@
         "install": "script/install-package.bat",
         "i": "yarn install",
         "dev": "script/dev.bat"
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.1"
     }
 }
