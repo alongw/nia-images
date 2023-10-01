@@ -1,8 +1,8 @@
 import fs from 'fs'
 import yaml from 'yaml'
 
-import { DbConfigType } from '../types/config'
-import logger from './log'
+import { DbConfigType } from '../types/config.js'
+import logger from './log.js'
 
 try {
     logger.info('尝试读取本地配置文件 ./config.yaml')

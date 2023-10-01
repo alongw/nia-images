@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { query } from './db'
+import { query } from './db.js'
 
-import { Config } from '../types/config'
+import { Config } from '../types/config.js'
 
 // 远程配置文件
 export const getConfig = async <T extends keyof Config, K extends keyof Config[T]>(

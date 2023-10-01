@@ -1,8 +1,8 @@
-import type { Permission } from '../types/permission'
-import type { Request } from '../types/express'
+import type { Permission } from '../types/permission.js'
+import type { Request } from '../types/express.js'
 import type { RequestHandler } from 'express'
-import logger from './log'
-import { query } from './db'
+import logger from './log.js'
+import { query } from './db.js'
 
 /**
  * 将两级的类型转换为可选

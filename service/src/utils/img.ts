@@ -1,8 +1,8 @@
-import { query, rawQuery } from './db'
-import { checkPermission } from './permission'
-import type { DbUser } from './../types/user'
-import type { Images, Config } from './../types/images'
-import logger from './log'
+import { query, rawQuery } from './db.js'
+import { checkPermission } from './permission.js'
+import type { DbUser } from './../types/user.js'
+import type { Images, Config } from './../types/images.js'
+import logger from './log.js'
 
 export const getImg = async (user: DbUser, config?: Config) => {
     // 鉴权请求

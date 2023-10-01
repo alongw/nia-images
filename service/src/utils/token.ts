@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import { getConfig } from './config'
-import { User } from '../types/express'
+import { getConfig } from './config.js'
+import { User } from '../types/express.js'
 
 const jwtSecretKey = await getConfig('jwt', 'secret')
 const expiresIn = await getConfig('jwt', 'expires')

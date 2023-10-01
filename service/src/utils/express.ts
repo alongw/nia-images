@@ -1,10 +1,10 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import expressJWT from 'express-jwt'
-import logger from './log'
+import logger from './log.js'
 import cors from 'cors'
-import { getConfig } from './config'
-import type { Request } from '../types/express'
+import { getConfig } from './config.js'
+import type { Request } from '../types/express.js'
 
 const jwtSecretKey = await getConfig('jwt', 'secret')
 const baseUrl = await getConfig('app', 'baseUrl')

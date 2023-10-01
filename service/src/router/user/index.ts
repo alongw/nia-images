@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { auth } from './../../utils/permission'
-import { query } from './../../utils/db'
-import { getConfig } from './../../utils/config'
-import md5 from './../../utils/md5'
+import { auth } from './../../utils/permission.js'
+import { query } from './../../utils/db.js'
+import { getConfig } from './../../utils/config.js'
+import md5 from './../../utils/md5.js'
 
-import type { Request } from './../../types/express'
-import logger from './../../utils/log'
+import type { Request } from './../../types/express.js'
+import logger from './../../utils/log.js'
 
 const router = Router()
 

@@ -1,6 +1,6 @@
-import { checkPermission } from './permission'
+import { checkPermission } from './permission.js'
 
-import type { Permission } from './../types/permission'
+import type { Permission } from './../types/permission.js'
 
 type PartialSub<T> = {
     [k in keyof T]?: {

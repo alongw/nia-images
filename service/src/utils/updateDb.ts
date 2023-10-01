@@ -1,5 +1,5 @@
-import { query, rawQuery } from './db'
-import logger from './log'
+import { query, rawQuery } from './db.js'
+import logger from './log.js'
 
 const thisVersion = 2
 
@@ -213,4 +213,4 @@ const checkUpdate = async () => {
 
 checkUpdate()
 
-import('./start')
+import('./start.js')

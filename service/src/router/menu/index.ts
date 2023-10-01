@@ -1,8 +1,8 @@
 import { Router } from 'express'
 
-import { getMenu } from './../../utils/menu'
+import { getMenu } from './../../utils/menu.js'
 
-import type { Request } from './../../types/express'
+import type { Request } from './../../types/express.js'
 
 const router = Router()
 

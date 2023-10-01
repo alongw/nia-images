@@ -1,14 +1,14 @@
 import { Router } from 'express'
 import { OkPacket } from 'mysql2'
-import { query } from './../../utils/db'
-import token from './../../utils/token'
-import md5 from './../../utils/md5'
-import { checkTicket } from './../../utils/captcha'
-import logger from './../../utils/log'
-import { getConfig } from './../../utils/config'
-import { checkPermission } from './../../utils/permission'
+import { query } from './../../utils/db.js'
+import token from './../../utils/token.js'
+import md5 from './../../utils/md5.js'
+import { checkTicket } from './../../utils/captcha.js'
+import logger from './../../utils/log.js'
+import { getConfig } from './../../utils/config.js'
+import { checkPermission } from './../../utils/permission.js'
 
-import type { Request } from './../../types/request'
+import type { Request } from './../../types/request.js'
 
 const router = Router()
 

@@ -1,12 +1,12 @@
 import { Router, Request, Response } from 'express'
-import { query } from './../../utils/db'
-import { getImg } from './../../utils/img'
-import { checkPermission } from './../../utils/permission'
+import { query } from './../../utils/db.js'
+import { getImg } from './../../utils/img.js'
+import { checkPermission } from './../../utils/permission.js'
 import { OkPacket } from 'mysql2'
 
 // import type { Request } from './../../types/express'
-import type { DbUser } from './../../types/user'
-import type { Config } from './../../types/images'
+import type { DbUser } from './../../types/user.js'
+import type { Config } from './../../types/images.js'
 
 const router = Router()
 router.get('/', async (req, res) => {
