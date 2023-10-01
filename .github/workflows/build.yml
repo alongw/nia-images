@@ -43,9 +43,9 @@ jobs:
                   echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' >> .env
                   yarn build
                   cd ..
-                  cp ./package.json ./dtst
-                  cp -r ./service/dist ./dtst/service
-                  cp -r ./web/dist ./dtst/web
+                  cp ./package.json ./dist
+                  cp -r ./service/dist ./dist/service
+                  cp -r ./web/dist ./dist/web
                   cp ./web/package.json ./dist/web
                   cp ./service/package.json ./dist/service
                   cp -r ./service/template ./dist/service
