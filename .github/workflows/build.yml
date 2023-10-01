@@ -46,9 +46,9 @@ jobs:
                   cp ./package.json ./dtst
                   cp -r ./service/dist ./dtst/service
                   cp -r ./web/dist ./dtst/web
-                  cp ./web/package.json ./dtst/web
-                  cp ./service/package.json ./dtst/service
-                  cp -r ./service/template ./dtst/service
+                  cp ./web/package.json ./dist/web
+                  cp ./service/package.json ./dist/service
+                  cp -r ./service/template ./dist/service
 
             - name: 上传前端文件
               uses: actions/upload-artifact@v2
