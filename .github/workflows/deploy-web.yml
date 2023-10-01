@@ -16,6 +16,7 @@ jobs:
             SERVER_PORT: ${{secrets.SERVER_PORT}}
             SERVER_PATH: ${{secrets.SERVER_PATH}}
             SERVER_KEY: ${{secrets.SERVER_KEY}}
+            WEB_PATH: ${{secrets.WEB_PATH}}
         steps:
             - name: 从仓库拉取源代码
               uses: actions/checkout@v3
@@ -52,5 +53,5 @@ jobs:
                   SOURCE: /web/dist
                   REMOTE_HOST: ${{ secrets.SERVER_HOST }}
                   REMOTE_USER: ${{ secrets.SERVER_USER }}
-                  TARGET: ${{secrets.SERVER_PATH}}
+                  TARGET: ${{secrets.WEB_PATH}}
                   REMOTE_PORT: ${{ secrets.SERVER_PORT }}
