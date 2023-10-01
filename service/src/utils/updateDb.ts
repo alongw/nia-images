@@ -1,7 +1,7 @@
 import { query, rawQuery } from './db.js'
 import logger from './log.js'
 
-const thisVersion = 2
+const thisVersion = 3
 
 const cmd: {
     [key: number]: string[]
