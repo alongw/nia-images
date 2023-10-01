@@ -37,7 +37,7 @@ jobs:
                   yarn build
                   mv ./dist ./img
                   cp ./package.json ./img
-                  cp ./template ./img
+                  cp -r ./template ./img
                   cd ..
 
             - name: 上传后端文件
