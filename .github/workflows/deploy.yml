@@ -1,0 +1,78 @@
+name: deploy
+
+on:
+    workflow_dispatch:
+    # push:
+    #     branches:
+    #         - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            BASE_URL: ${{secrets.BASE_URL}}
+            SERVER_HOST: ${{secrets.SERVER_HOST}}
+            SERVER_USER: ${{secrets.SERVER_USER}}
+            SERVER_PORT: ${{secrets.SERVER_PORT}}
+            SERVER_PATH: ${{secrets.SERVER_PATH}}
+            SERVER_KEY: ${{secrets.SERVER_KEY}}
+        steps:
+            - name: 从仓库拉取源代码
+              uses: actions/checkout@v3
+
+            - name: 设置 node 版本
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: 安装依赖
+              run: |
+                  cd ./service
+                  yarn install
+                  cd ..
+                  cd ./web
+                  yarn install
+                  cd ..
+
+            - name: 构建
+              run: |
+                  mkdir ./dist
+                  cd ./dist
+                  mkdir ./web
+                  mkdir ./service
+                  cd ..
+                  cd ./service
+                  yarn build
+                  cd ..
+                  cd ./web
+                  echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' >> .env
+                  yarn build
+                  cd ..
+                  cp ./package.json ./dist
+                  cp -r ./service/dist ./dist/service
+                  cp -r ./web/dist ./dist/web
+                  cp ./web/package.json ./dist/web
+                  cp ./service/package.json ./dist/service
+                  cp -r ./service/template ./dist/service
+
+            - name: 上传前端文件
+              uses: actions/upload-artifact@v2
+              with:
+                  name: frontend-build
+                  path: dist/web/
+
+            - name: 上传后端文件
+              uses: actions/upload-artifact@v2
+              with:
+                  name: service-build
+                  path: dist/service
+
+            - name: 部署后端到服务器
+              uses: easingthemes/ssh-deploy@main
+              with:
+                  SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
+                  SOURCE: dist/nia/
+                  REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+                  REMOTE_USER: ${{ secrets.SERVER_USER }}
+                  TARGET: ${{secrets.SERVER_PATH}}
+                  REMOTE_PORT: ${{ secrets.SERVER_PORT }}
