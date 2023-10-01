@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import here ...
 import { ref, computed, onMounted, watch } from 'vue'
-import { MenuProps } from 'ant-design-vue'
+import type { MenuProps } from 'ant-design-vue'
 import { useRouter, useRoute } from 'vue-router'
 
 import { getMenuApi } from '@/apis'
