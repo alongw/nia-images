@@ -1,5 +1,5 @@
 import { createTransport } from 'nodemailer'
-import { getConfig } from './config'
+import { getConfig } from './config.js'
 
 import type Mail from 'nodemailer/lib/mailer'
 
