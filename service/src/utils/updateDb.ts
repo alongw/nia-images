@@ -225,7 +225,7 @@ const checkUpdate = async () => {
         'app-update-success-lock ' + Date.now()
     } WHERE id = 1`
 
-    logger.info(`[数据库更新] - 升级完成，请检查是否需要修改配置并重启程序`)
+    logger.info(`[数据库更新] - 升级队列执行完毕，请检查是否需要修改配置并重启程序`)
     process.exit()
 }
 
