@@ -11,7 +11,7 @@
         "lint": "eslint .",
         "format": "prettier --write --cache .",
         "dev": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts",
-        "build": "npx eslint . && npx ts-node ./script/build.ts",
+        "build": "npx eslint . && npx tsc --module esnext",
         "build:nolint": "npx ts-node ./script/build.ts",
         "build:tsc": "npx tsc",
         "build:lint": "npx eslint . && ts-node ./script/build.ts",
