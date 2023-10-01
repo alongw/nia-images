@@ -24,6 +24,7 @@
         "@types/figlet": "^1.5.6",
         "@types/jsonwebtoken": "8.5.8",
         "@types/node": "^20.4.0",
+        "@types/nodemailer": "^6.4.11",
         "@types/shelljs": "^0.8.12",
         "@typescript-eslint/eslint-plugin": "^5.60.0",
         "@typescript-eslint/parser": "^5.60.0",
@@ -47,6 +48,7 @@
         "jsonwebtoken": "^9.0.0",
         "log4js": "^6.9.1",
         "mysql2": "^3.6.1",
+        "nodemailer": "^6.9.5",
         "shelljs": "^0.8.5"
     }
 }

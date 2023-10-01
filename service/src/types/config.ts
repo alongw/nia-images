@@ -14,6 +14,16 @@ export interface Config {
     readonly app: {
         listenPort: number
         baseUrl: string
+        mail: {
+            host: string
+            port: number
+            secure: boolean
+            from: string
+            auth: {
+                user: string
+                pass: string
+            }
+        }
     }
 
     readonly jwt: {

@@ -63,7 +63,19 @@ const login = async () => {
         <a-space wrap>
             <a-button type="primary" @click="login()" :loading="loading">登录</a-button>
             <a-button>忘记密码</a-button>
-            <a-button style="float: right">注册</a-button>
+            <a-button
+                style="float: right"
+                @click="
+                    $router.push({
+                        path: '/register',
+                        query: {
+                            redirect: router.currentRoute.value.fullPath,
+                            click: 'button'
+                        }
+                    })
+                "
+                >注册</a-button
+            >
         </a-space>
     </div>
 </template>

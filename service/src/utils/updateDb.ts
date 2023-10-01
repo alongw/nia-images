@@ -109,7 +109,25 @@ const cmd: {
         insert into \`system\` (\`version\`, dbVersion, \`lock\`) values (1, 1, 'unlock');
         `
     ],
-    2: [`select * from \`system\``]
+    2: [`select * from \`system\``],
+    3: [
+        `alter table user
+        add email varchar(99) null comment '邮箱' after login_time;`,
+        `alter table user
+        add invite_code varchar(99) null comment '注册时使用的邀请码' after email;`,
+        `alter table user
+        add code varchar(10) null comment '验证码' after email;`,
+        `alter table user
+        add code_time varchar(99) null comment '上次获取验证码的时间' after code;`,
+        `alter table user
+        modify user varchar(32) null comment '用户账号';`,
+        `alter table user
+        modify password char(32) null comment '用户密码 md5';`,
+        `alter table user
+        modify permission_group int default 0 null comment '用户权限组';`,
+        `alter table user
+        alter column permission_group set default (-10);`
+    ]
 }
 
 logger.info('[数据库更新] - 开始检查更新')
