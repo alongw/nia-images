@@ -184,7 +184,7 @@ logger.info(
 --------------------
         系统版本号：${system.version}
         数据库版本号：${system.dbVersion}
-        数据库状态:${system.lock == 'unlock' ? '已解锁（不安全）' : '安全'}
+        数据库状态: ${system.lock == 'unlock' ? '已解锁（不安全）' : '安全'}
 --------------------`
 )
 
@@ -222,7 +222,7 @@ const checkUpdate = async () => {
 
     // 修改数据库信息
     await query`UPDATE \`system\` SET dbVersion = ${thisVersion},\`lock\` = ${
-        'app-update-success-lock' + Date.now()
+        'app-update-success-lock ' + Date.now()
     } WHERE id = 1`
 
     logger.info(`[数据库更新] - 升级完成，请检查是否需要修改配置并重启程序`)
