@@ -5,7 +5,8 @@
 	"main": "./src/worker.ts",
 	"scripts": {
 		"deploy": "wrangler deploy",
-		"start": "wrangler dev"
+		"dev": "wrangler dev",
+		"publish": "wrangler publish"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20230419.0",

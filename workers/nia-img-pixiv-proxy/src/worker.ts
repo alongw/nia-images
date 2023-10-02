@@ -26,7 +26,8 @@ async function handleRequest(request: Request): Promise<Response> {
 	}
 
 	// 向认证服务器发送 POST 请求进行鉴权
-	const authServerURL = 'http://localhost:10099/api/public/pixivAuth';
+	// const authServerURL = 'http://localhost:10099/api/public/pixivAuth';
+	const authServerURL = 'https://api.liyxi.com/img/public/pixivAuth';
 	const authRequestBody = new URLSearchParams({
 		key: authKey,
 		pixivImgId: pixivImgId,

@@ -2,7 +2,7 @@ name = "nia-img-pixiv-proxy"
 main = "src/worker.ts"
 compatibility_date = "2023-10-02"
 usage_model = "bundled"
-env = { }
+env = {}
 
 [triggers]
-crons = [ ]
+crons = []
