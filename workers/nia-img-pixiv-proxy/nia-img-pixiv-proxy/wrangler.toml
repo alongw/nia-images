@@ -1,0 +1,8 @@
+name = "nia-img-pixiv-proxy"
+main = "src/index.ts"
+compatibility_date = "2023-10-02"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
