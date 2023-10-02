@@ -60,22 +60,28 @@ async function handleRequest(request: Request): Promise<Response> {
 
 		// 创建新请求，代理到 Pixiv
 		let newRequest = new Request(newUrl.toString(), {
-			method: request.method,
+			method: 'GET',
 			headers: {
 				Referer: 'https://www.pixiv.net/',
-				'user-agent': 'Cloudflare Workers',
+				'User-Agent': 'Cloudflare Workers',
 			},
-			body: request.body,
+			// body: request.body,
 		});
 
 		// 代理请求到 Pixiv
 		let pixivResponse = await fetch(newRequest);
 
-		// 透明传递 Pixiv 的响应
-		return new Response(await pixivResponse.text(), {
+		// 获取 Pixiv 的二进制数据
+		const pixivData = await pixivResponse.arrayBuffer();
+
+		// 透明传递 Pixiv 的响应，包括正确的 Content-Type 头
+		return new Response(pixivData, {
 			status: pixivResponse.status,
 			statusText: pixivResponse.statusText,
-			headers: pixivResponse.headers,
+			headers: {
+				...pixivResponse.headers,
+				'Content-Type': pixivResponse.headers.get('Content-Type') || 'application/octet-stream', // 设置正确的 Content-Type
+			},
 		});
 	} catch (error) {
 		console.error('Authentication failed:', error);
