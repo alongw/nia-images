@@ -21,6 +21,8 @@ router.post(
         }>,
         res
     ) => {
+        console.log(req.body)
+
         if (
             !req.body ||
             !req.body.key ||
@@ -32,6 +34,7 @@ router.post(
                 msg: '参数不足'
             })
         }
+
         const { key, pixivImgId, pixivImgPage } = req.body
 
         // 获取用户信息 检查 KEY 是否有效
@@ -47,6 +50,9 @@ router.post(
         }
 
         if (KEYresult.length < 1) {
+            logger.info(
+                `Pixiv 图片代理 - 未知用户 KEY ${key} 请求 Pixiv 图片，但是没有找到该用户，疑似恶意调用，因此拒绝访问`
+            )
             return res.send({
                 status: 403,
                 msg: '拒绝访问'

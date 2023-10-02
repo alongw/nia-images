@@ -1,7 +1,7 @@
 import { query, rawQuery } from './db.js'
 import logger from './log.js'
 
-const thisVersion = 3
+const thisVersion = 4
 
 const cmd: {
     [key: number]: string[]
@@ -127,6 +127,12 @@ const cmd: {
         modify permission_group int default 0 null comment '用户权限组';`,
         `alter table user
         alter column permission_group set default (-10);`
+    ],
+    4: [
+        `alter table images
+        alter column source_name set default 'Pixiv';`,
+        `alter table images
+        alter column size_type set default 0;`
     ]
 }
 
