@@ -21,8 +21,6 @@ router.post(
         }>,
         res
     ) => {
-        console.log(req.body)
-
         if (
             !req.body ||
             !req.body.key ||
