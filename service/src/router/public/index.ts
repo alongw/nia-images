@@ -17,4 +17,9 @@ router.use('/img', async (req, res, next) =>
     (await import('./img.js')).default(req, res, next)
 )
 
+// pixivAuth
+router.use('/pixivAuth', async (req, res, next) =>
+    (await import('./pixivAuth.js')).default(req, res, next)
+)
+
 export default router
