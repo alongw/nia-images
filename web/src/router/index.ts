@@ -24,6 +24,11 @@ const router = createRouter({
             component: () => import('@/Page/Docs/Docs.vue')
         },
         {
+            path: '/proxy',
+            name: 'proxy',
+            component: () => import('@/Page/Proxy/Proxy.vue')
+        },
+        {
             path: '/loginout',
             name: 'loginout',
             component: () => import('@/Page/Loginout/Loginout.vue')

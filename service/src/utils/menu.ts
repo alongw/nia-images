@@ -40,7 +40,17 @@ const menus: Menu[] = [
                 low: true
             }
         },
-        priority: 9000
+        priority: 2000
+    },
+    {
+        key: '/proxy',
+        label: '图片代理',
+        permission: {
+            user: {
+                low: true
+            }
+        },
+        priority: 2010
     }
 ]
 
