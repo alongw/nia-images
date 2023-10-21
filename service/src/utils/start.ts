@@ -1,6 +1,9 @@
-import app from './express.js'
 import logger from './log.js'
+import app from './express.js'
 import { getConfig } from './config.js'
+import { checkUpdate } from './updateDb.js'
+
+await checkUpdate()
 
 const _port = await getConfig('app', 'listenPort')
 
