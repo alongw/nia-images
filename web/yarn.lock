@@ -1990,11 +1990,6 @@ dompurify@2.3.5:
   resolved "https://registry.npmmirror.com/dompurify/-/dompurify-2.3.5.tgz#c83ed5a3ae5ce23e52efe654ea052ffb358dd7e3"
   integrity sha512-kD+f8qEaa42+mjdOpKeztu9Mfx5bv9gVLO6K9jRx4uGvh6Wv06Srn4jr1wPNY2OOUGGSKHNFN+A8MA3v0E0QAQ==
 
-dynamic-tencent-captcha@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmmirror.com/dynamic-tencent-captcha/-/dynamic-tencent-captcha-1.0.2.tgz#7f0ca19378e6b6eb70d0c24e1636156572475b4c"
-  integrity sha512-A6Km/K3LFHhhHY/4WJCM1NSQmJnJNQwppOycAdsxJSyeKlNzZiQ+lheVO8/iG89N4QspxvVtKSDHeVJKzRUZYQ==
-
 electron-to-chromium@^1.4.535:
   version "1.4.537"
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.537.tgz#aac4101db53066be1e49baedd000a26bc754adc9"
@@ -3357,6 +3352,11 @@ needle@^3.1.0:
     debug "^3.2.6"
     iconv-lite "^0.6.3"
     sax "^1.2.4"
+
+nia-captcha@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/nia-captcha/-/nia-captcha-1.0.0.tgz#3b67e9dd0cb775193c6f8c813b9c7b3349dabf99"
+  integrity sha512-at80RDhjoiUHb9mLnKCDbyFnFDBDCo6TFXMqbcqwiCaoBhfX0ipPJNB7Ja9DI3BbzTNMpb8i+v4Vaz7bSkT8zA==
 
 node-releases@^2.0.13:
   version "2.0.13"

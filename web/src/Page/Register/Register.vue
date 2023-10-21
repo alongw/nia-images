@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import getCaptcha from 'dynamic-tencent-captcha'
+import getCaptcha from 'nia-captcha'
 import { message } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { getMailCodeApi, registerApi } from '@/apis'

@@ -49,12 +49,12 @@ router.post(
             req.body.captcha.randstr
         )
 
-        // if (status !== 200) {
-        //     return res.send({
-        //         status,
-        //         msg
-        //     })
-        // }
+        if (status !== 200) {
+            return res.send({
+                status,
+                msg
+            })
+        }
 
         // 检查密码
         const [err, result] = await query`SELECT * FROM user WHERE user = ${

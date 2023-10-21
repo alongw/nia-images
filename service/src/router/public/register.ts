@@ -42,12 +42,13 @@ router.post(
             req.body.code.ticket,
             req.body.code.randstr
         )
-        // if (status !== 200) {
-        //     return res.send({
-        //         status,
-        //         msg
-        //     })
-        // }
+
+        if (status !== 200) {
+            return res.send({
+                status,
+                msg
+            })
+        }
 
         // 查询邮箱是否被占用
         const [err, result] =
