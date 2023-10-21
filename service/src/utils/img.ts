@@ -74,8 +74,26 @@ const filterImages = async (
     }
 
     // 图片存在
+
+    // 处理 Pixiv 代理链接
+    const img = pixivProxyUrl(result[0], user)
+
     logger.info(`向用户 ${user.user}(${user.uid}) 响应 ID 为 ${result[0].iid} 图片`)
-    return result[0]
+    return img
+}
+
+const pixivProxyUrl = async (img: Images, user: DbUser) => {
+    if (
+        img.source_name === 'Pixiv' &&
+        img.url_public?.startsWith('https://i.pximg.net')
+    ) {
+        img.url_public = img.url_public.replace(
+            'https://i.pximg.net',
+            'https://imgs.ama.moe'
+        )
+        img.url_public += '?key=' + user.key
+    }
+    return img
 }
 
 // 检查配置项限权
