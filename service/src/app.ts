@@ -1,7 +1,8 @@
 import figlet from 'figlet'
+import logger from './utils/log.js'
 
-import './utils/updateDb.js'
+console.log(`\n${figlet.textSync('Nia - Images')}\n`)
+logger.info(`Nia - Images 正在启动`)
 
-console.log()
-console.log(figlet.textSync('Nia - Images'))
-console.log()
+await import('./utils/updateDb.js')
+await import('./utils/start.js')

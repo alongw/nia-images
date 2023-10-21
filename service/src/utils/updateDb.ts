@@ -185,19 +185,19 @@ if (result.length == 0) {
 
 const system = result[0]
 
-logger.info(
-    `[数据库更新] - 获取系统信息
---------------------
-        系统版本号：${system.version}
-        数据库版本号：${system.dbVersion}
-        数据库状态: ${system.lock == 'unlock' ? '已解锁（不安全）' : '安全'}
---------------------`
-)
+logger.info(`[数据库更新] - 获取系统信息`)
+logger.info(`--------------------`)
+logger.info(`系统版本号：${system.version}`)
+logger.info(`数据库版本号：${system.dbVersion}`)
+logger.info(`数据库状态: ${system.lock == 'unlock' ? '已解锁（不安全）' : '安全'}`)
+logger.info(`--------------------`)
 
 const checkUpdate = async () => {
     // 检查更新
     if (system.dbVersion >= thisVersion) {
-        return logger.info(`[数据库更新] - 检查更新通过，数据库版本与程序需要版本相同`)
+        return logger.info(
+            `[数据库更新] - 检查更新通过，数据库版本与程序对应版本相同，将放行下一操作`
+        )
     }
 
     // 更新数据库
@@ -236,5 +236,3 @@ const checkUpdate = async () => {
 }
 
 checkUpdate()
-
-import('./start.js')
