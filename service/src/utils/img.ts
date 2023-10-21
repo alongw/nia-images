@@ -3,6 +3,7 @@ import { checkPermission } from './permission.js'
 import type { DbUser } from './../types/user.js'
 import type { Images, Config } from './../types/images.js'
 import logger from './log.js'
+import { getConfig } from './config.js'
 
 export const getImg = async (user: DbUser, config?: Config) => {
     // 鉴权请求
@@ -89,7 +90,7 @@ const pixivProxyUrl = async (img: Images, user: DbUser) => {
     ) {
         img.url_public = img.url_public.replace(
             'https://i.pximg.net',
-            'https://imgs.ama.moe'
+            await getConfig('images', 'pixivProxy')
         )
         img.url_public += '?key=' + user.key
     }

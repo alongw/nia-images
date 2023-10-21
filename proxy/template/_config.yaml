@@ -1,0 +1,6 @@
+port: 10010
+authServer: http://localhost:10099/api
+proxy: 
+  enable: false
+  host: 10.0.0.200
+  port: 11451

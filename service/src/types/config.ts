@@ -35,4 +35,8 @@ export interface Config {
     readonly user: {
         key: string
     }
+
+    readonly images: {
+        pixivProxy: string
+    }
 }

@@ -1,0 +1,30 @@
+{
+    "name": "nia-images-proxy",
+    "version": "1.0.0",
+    "main": "./src/app.ts",
+    "license": "AGPL-3.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon -x node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm src/app.ts",
+        "start": "yarn start:ts",
+        "start:ts": "ts-node-esm --experimental-specifier-resolution=node src/app.ts",
+        "start:node": "node --es-module-specifier-resolution=node dist/app.js",
+        "build": "npx tsc --module esnext"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.15",
+        "@types/express": "^4.17.20",
+        "@types/node": "^20.8.7",
+        "@types/tunnel": "^0.0.5",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "axios": "^1.5.1",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "tunnel": "^0.0.6",
+        "yaml": "^2.3.3"
+    }
+}
