@@ -1,58 +1,8 @@
 import { checkPermission } from './permission.js'
 
-import type { Permission } from './../types/permission.js'
+import { menus } from './../data/menu.js'
 
-type PartialSub<T> = {
-    [k in keyof T]?: {
-        [sub in keyof T[k]]?: T[k][sub]
-    }
-}
-
-interface _Permission extends Permission {
-    key: string
-    name: string
-}
-
-interface Menu {
-    key: string
-    label: string
-    permission: PartialSub<_Permission> | string | null
-    priority: number
-}
-
-// 定义所有菜单组
-const menus: Menu[] = [
-    {
-        key: '/users',
-        label: '用户中心',
-        permission: {
-            user: {
-                login: true
-            }
-        },
-        priority: 1010
-    },
-    {
-        key: '/docs',
-        label: '使用文档',
-        permission: {
-            user: {
-                low: true
-            }
-        },
-        priority: 2000
-    },
-    {
-        key: '/proxy',
-        label: '图片代理',
-        permission: {
-            user: {
-                low: true
-            }
-        },
-        priority: 2010
-    }
-]
+import type { Menu } from './../types/menu.js'
 
 // 检查用户权限
 export const getMenu = async (user: number) => {
