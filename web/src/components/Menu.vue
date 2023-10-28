@@ -67,7 +67,7 @@ onMounted(() => {
 <template>
     <a-menu
         v-model:selectedKeys="current"
-        mode="vertical"
+        mode="inline"
         @click="click($event.key)"
         :items="items"
         style="width: 30%; max-width: 200px"
