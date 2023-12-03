@@ -67,9 +67,9 @@ copyFolder('template', 'dist/out/template')
 // 复制 file 文件夹中的文件到 dist/out 目录
 copyFolderFiles('dist/file', 'dist/out')
 
-// 复制 package.json 和 yarn.lock 和 LICENSE 文件到 dist/code 目录
-shell.cp('package.json', 'dist/code/package.json')
-shell.cp('yarn.lock', 'dist/code/yarn.lock')
-shell.cp('LICENSE', 'dist/code/LICENSE')
+// 复制 package.json 和 yarn.lock 和 LICENSE 文件到 dist/out 目录
+shell.cp('package.json', 'dist/out/package.json')
+shell.cp('yarn.lock', 'dist/out/yarn.lock')
+shell.cp('LICENSE', 'dist/out/LICENSE')
 
 console.log('成功构建')
