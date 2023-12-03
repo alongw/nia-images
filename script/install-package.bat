@@ -1,7 +1,11 @@
 cd ./service
-yarn install
+call yarn install
 cd ./../
 
 cd ./web
-yarn install
+call install
+cd ./../
+
+cd ./proxy
+call install
 cd ./../
