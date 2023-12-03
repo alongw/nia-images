@@ -57,7 +57,14 @@ router.all('*', async (req, res) => {
             responseType: 'arraybuffer'
         })
 
-        return res.send(img.data)
+        res.set(
+            'Content-Disposition',
+            `inline; filename="nia-img_${
+                img.headers['content-type']
+                    ? `.${img.headers['content-type'].split('/')[1]}`
+                    : '.png'
+            }"`
+        ).send(img.data)
     } catch (error) {
         return res.send({
             status: 501,
