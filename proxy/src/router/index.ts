@@ -1,6 +1,6 @@
 import express from 'express'
 import { config } from './../utils/config.js'
-import axios, { AxiosInstance } from 'axios'
+import axios from 'axios'
 import * as tunnel from 'tunnel'
 
 const router = express.Router()
