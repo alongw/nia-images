@@ -35,8 +35,16 @@ jobs:
                   cd ./dist
                   mkdir ./web
                   mkdir ./service
+                  mkdir ./proxy
+                  mkdir ./daemon
                   cd ..
                   cd ./service
+                  yarn build
+                  cd ..
+                  cd ./proxy
+                  yarn build
+                  cd ..
+                  cd ./daemon
                   yarn build
                   cd ..
                   cd ./web
@@ -45,6 +53,8 @@ jobs:
                   cd ..
                   cp ./package.json ./dist
                   cp -r ./service/dist/out ./dist/service
+                  cp -r ./proxy/dist/out ./dist/proxy
+                  cp -r ./daemon/dist/out ./dist/daemon
                   cp -r ./web/dist ./dist/web
                   cp ./web/package.json ./dist/web
 
@@ -59,3 +69,15 @@ jobs:
               with:
                   name: service-build
                   path: dist/service
+
+            - name: 上传图片代理节点文件
+              uses: actions/upload-artifact@v3
+              with:
+                  name: proxy-build
+                  path: dist/proxy
+
+            - name: 上传守护进程文件
+              uses: actions/upload-artifact@v3
+              with:
+                  name: daemon-build
+                  path: dist/daemon
