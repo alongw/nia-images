@@ -35,13 +35,11 @@ jobs:
               run: |
                   cd ./service
                   yarn build
-                  mv ./dist ./img
-                  cp ./package.json ./img
-                  cp -r ./template ./img
+                  mv ./dist/out ./dist/img
                   cd ..
 
             - name: 上传后端文件
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v3
               with:
                   name: service-build
                   path: service/img
@@ -50,7 +48,7 @@ jobs:
               uses: easingthemes/ssh-deploy@main
               with:
                   SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
-                  SOURCE: /service/img
+                  SOURCE: /service/dist/img
                   REMOTE_HOST: ${{ secrets.SERVER_HOST }}
                   REMOTE_USER: ${{ secrets.SERVER_USER }}
                   TARGET: ${{secrets.SERVER_PATH}}
