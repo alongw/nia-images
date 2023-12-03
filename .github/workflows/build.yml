@@ -29,7 +29,7 @@ jobs:
                   yarn install
                   cd ..
 
-            - name: 构建
+            - name: 准备构建
               run: |
                   mkdir ./dist
                   cd ./dist
@@ -38,25 +38,36 @@ jobs:
                   mkdir ./proxy
                   mkdir ./daemon
                   cd ..
+
+            - name: 构建 service
+              run: |
                   cd ./service
                   yarn build
                   cd ..
+                  cp -r ./service/dist/out ./dist/service
+
+            - name: 构建 proxy
+              run: |
                   cd ./proxy
                   yarn build
                   cd ..
+                  cp -r ./proxy/dist/out ./dist/proxy
+
+            - name: 构建 daemon
+              run: |
                   cd ./daemon
                   yarn build
                   cd ..
+                  cp -r ./daemon/dist/out ./dist/daemon
+
+            - name: 构建 web
+              run: |
                   cd ./web
                   echo 'VITE_HTTP_BASE_URL=${{secrets.BASE_URL}}' >> .env
                   yarn build
-                  cd ..
                   cp ./package.json ./dist
-                  cp -r ./service/dist/out ./dist/service
-                  cp -r ./proxy/dist/out ./dist/proxy
-                  cp -r ./daemon/dist/out ./dist/daemon
+                  cd ..
                   cp -r ./web/dist ./dist/web
-                  cp ./web/package.json ./dist/web
 
             - name: 上传前端文件
               uses: actions/upload-artifact@v3
