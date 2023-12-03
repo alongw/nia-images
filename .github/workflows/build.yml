@@ -28,6 +28,12 @@ jobs:
                   cd ./web
                   yarn install
                   cd ..
+                  cd ./proxy
+                  yarn install
+                  cd ..
+                  cd ./daemon
+                  yarn install
+                  cd ..
 
             - name: 准备构建
               run: |
