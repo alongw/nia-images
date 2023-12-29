@@ -54,6 +54,12 @@ const login = async () => {
     <div class="login">
         <h1>登录</h1>
         <a-space direction="vertical" style="width: 100%; margin-bottom: 20px">
+            <h2>使用 Nya Account 登录</h2>
+        </a-space>
+    </div>
+    <div class="login">
+        <h2>旧版账号密码登录</h2>
+        <a-space direction="vertical" style="width: 100%; margin-bottom: 20px">
             <a-input v-model:value="formData.user" placeholder="请输入账号" />
             <a-input-password
                 v-model:value="formData.password"
@@ -74,6 +80,7 @@ const login = async () => {
                         }
                     })
                 "
+                disabled
                 >注册</a-button
             >
         </a-space>
