@@ -21,7 +21,7 @@ type PartialSub<T> = {
 
 export const checkPermission = async (
     permission: PartialSub<Permission> | string,
-    user: number
+    user: number | string
 ): Promise<boolean> => {
     // 单个权限
     if (typeof permission == 'string') {
@@ -85,7 +85,7 @@ export const auth: {
 /**
  * 验证用户权限
  */
-const checkUserPermission = async (user: number, name: string) => {
+const checkUserPermission = async (user: number | string, name: string) => {
     const [err, result] = await query<
         {
             value: boolean | null | 0 | 1

@@ -19,6 +19,15 @@ export const loginApi = (data: {
     >('/public/login', data)
 }
 
+export const loginOauthApi = (data: { code: string }) => {
+    return axios.post<
+        Response<{
+            token: string
+            expiresIn: number
+        }>
+    >('/public/login/oauth', data)
+}
+
 // 注册获取验证码
 export const getMailCodeApi = (data: {
     email: string

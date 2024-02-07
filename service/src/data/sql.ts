@@ -130,5 +130,17 @@ export const cmd: {
         alter column source_name set default 'Pixiv';`,
         `alter table images
         alter column size_type set default 0;`
+    ],
+    5: [
+        `alter table user
+        modify uid char(36) not null comment '用户唯一标识符';`,
+        `
+        alter table api_log
+        modify uid char(36) not null comment '用户 UID';
+        `,
+        `
+        alter table login_log
+        modify uid char(36) not null comment '用户ID';
+        `
     ]
 }

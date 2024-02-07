@@ -20,6 +20,10 @@ router.post(
         }>,
         res
     ) => {
+        return res.send({
+            status: 403,
+            msg: '已关闭注册功能'
+        })
         if (
             !req.body.email ||
             !/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(req.body.email)
@@ -131,6 +135,10 @@ router.post(
         }>,
         res
     ) => {
+        return res.send({
+            status: 403,
+            msg: '已关闭注册功能'
+        })
         if (
             !req.body.user ||
             !req.body.password ||

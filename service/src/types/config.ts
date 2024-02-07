@@ -39,4 +39,10 @@ export interface Config {
     readonly images: {
         pixivProxy: string
     }
+
+    readonly nya: {
+        appid: string
+        key: string
+        redirect: string
+    }
 }

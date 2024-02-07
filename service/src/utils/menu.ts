@@ -5,7 +5,7 @@ import { menus } from './../data/menu.js'
 import type { Menu } from './../types/menu.js'
 
 // 检查用户权限
-export const getMenu = async (user: number) => {
+export const getMenu = async (user: number | string) => {
     const menu: Menu[] = []
 
     await Promise.all(

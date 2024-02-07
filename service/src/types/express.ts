@@ -1,7 +1,7 @@
 import { Request as ExpressRequest, Express } from 'express'
 
 export interface User extends Express.User {
-    uid: number
+    uid: number | string
     user: string
     permission_group: number
     api_img: number

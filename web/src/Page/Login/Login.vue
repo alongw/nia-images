@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // import here ...
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { message } from 'ant-design-vue'
 import getCaptcha from 'nia-captcha'
-import { loginApi } from '@/apis'
+import { loginApi, loginOauthApi } from '@/apis'
 import router from '@/router'
 
 defineOptions({
@@ -48,13 +48,44 @@ const login = async () => {
         }
     })
 }
+
+const goAuth = () => {
+    window.location.href =
+        'https://account.lolinya.net/authorize?client_id=c765ca8f-7eb9-48cd-99ae-69d3f6e38a1c&state=' +
+        Math.random()
+}
+
+onMounted(async () => {
+    if (
+        !router.currentRoute.value.query.code ||
+        router.currentRoute.value.query.code == 'deny'
+    )
+        return
+    // 登录
+    const { data: result } = await loginOauthApi({
+        code: router.currentRoute.value.query.code.toString()
+    })
+    if (result.status !== 200) return message.error(result.msg)
+    message.success(result.msg)
+    window.localStorage.setItem('token', result.data.token)
+    window.localStorage.setItem('expiresIn', result.data.expiresIn.toString())
+    router.push({
+        path: '/',
+        query: {
+            redirect: router.currentRoute.value.fullPath,
+            login: 'success'
+        }
+    })
+})
 </script>
 
 <template>
     <div class="login">
         <h1>登录</h1>
         <a-space direction="vertical" style="width: 100%; margin-bottom: 20px">
+            截至 2024 年 2 月 4 日起，请直接使用 Nya Account 登录
             <h2>使用 Nya Account 登录</h2>
+            <a-button type="primary" @click="goAuth">前往授权</a-button>
         </a-space>
     </div>
     <div class="login">
