@@ -1,4 +1,4 @@
-export const thisVersion = 4
+export const thisVersion = 5
 
 export const cmd: {
     [key: number]: string[]
